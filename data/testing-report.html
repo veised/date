@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Отчёт по тестированию</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .report-container {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    .report-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+    .metric {
+      padding: 1rem;
+      margin: 1rem 0;
+      background: #f8f9fa;
+      border-left: 5px solid #ff6b35;
+      border-radius: 8px;
+    }
+    .log-entry {
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      background: #f0f0f0;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+    .btn-report {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: #ff6b35;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      margin: 2rem 0;
+      cursor: pointer;
+    }
+    .btn-report:hover {
+      background: #e55a2e;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .summary-item {
+      padding: 1rem;
+      background: #e8f5e8;
+      border-radius: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Шапка -->
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'">Шаурма Быстро</div>
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+    </nav>
+  </header>
+
+  <!-- Основной контент -->
+  <main class="report-container">
+    <div class="report-header">
+      <h1>Отчёт по тестированию</h1>
+      <p>Автоматически собран на основе логов и замеров производительности</p>
+    </div>
+
+    <button onclick="generateReport()" class="btn-report">Обновить отчёт</button>
+    <button onclick="Logger.exportLogs()" class="btn-report" style="background: #1976D2;">Экспорт логов (JSON)</button>
+    <button onclick="Logger.clear(); location.reload()" class="btn-report" style="background: #c62828;">Очистить логи</button>
+
+    <div id="summary" class="summary"></div>
+    <div id="performance"></div>
+    <div id="logs"></div>
+  </main>
+
+  <script src="js/logging.js"></script>
+  <script>
+    function generateReport() {
+      const logs = Logger.getLogs();
+      const container = document.getElementById('performance');
+      const logsContainer = document.getElementById('logs');
+      const summaryContainer = document.getElementById('summary');
+
+      // Сброс
+      container.innerHTML = '<h2>⏱Производительность</h2>';
+      logsContainer.innerHTML = '<h2>Логи</h2>';
+      summaryContainer.innerHTML = '';
+
+      // Статистика
+      const total = logs.length;
+      const errors = logs.filter(l => l.level === 'error').length;
+      const successes = logs.filter(l => l.level === 'success').length;
+      const info = logs.filter(l => l.level === 'info').length;
+
+      summaryContainer.innerHTML = `
+        <div class="summary-item">
+          <strong>Всего событий</strong><br>${total}
+        </div>
+        <div class="summary-item" style="background: #ffebee;">
+          <strong>Ошибок</strong><br>${errors}
+        </div>
+        <div class="summary-item" style="background: #e8f5e8;">
+          <strong>Успехов</strong><br>${successes}
+        </div>
+        <div class="summary-item" style="background: #bbdefb;">
+          <strong>Информация</strong><br>${info}
+        </div>
+      `;
+
+      // Производительность
+      const perfLogs = logs.filter(l => l.action === 'Function executed');
+      if (perfLogs.length > 0) {
+        const perfList = document.createElement('div');
+        perfLogs.forEach(log => {
+          const div = document.createElement('div');
+          div.className = 'metric';
+          div.innerHTML = `<strong>${log.details.name}</strong>: ${log.details.duration}`;
+          perfList.appendChild(div);
+        });
+        container.appendChild(perfList);
+      } else {
+        container.innerHTML += '<p>Нет данных о производительности.</p>';
+      }
+
+      // Все логи
+      if (logs.length > 0) {
+        logs.slice(-100).reverse().forEach(log => {
+          const div = document.createElement('div');
+          div.className = 'log-entry';
+          div.innerHTML = `[${log.timestamp}] <strong>${log.action}</strong> (${log.level})<br>
+                           <small>Страница: ${log.page}</small>`;
+          logsContainer.appendChild(div);
+        });
+      } else {
+        logsContainer.innerHTML += '<p>Логи пусты.</p>';
+      }
+    }
+
+    // Автозагрузка
+    window.onload = generateReport;
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Личный кабинет — Шаурма Быстро</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Шапка сайта -->
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'">
+      Шаурма Быстро
+    </div>
+    <div class="contacts">
+      +7 (999) 123-45-67
+    </div>
+    <nav class="nav">
+    <a href="cart.html">Корзина</a>
+    </nav>
+  </header>
+
+  <!-- Основной контент -->
+  <main class="main-content">
+    <h1>Личный кабинет</h1>
+
+    <!-- Блок: Данные пользователя -->
+    <section class="profile-section">
+      <h2>Ваши данные</h2>
+      <div id="profile-info">
+        <p><strong>Имя:</strong> <span id="user-name">—</span></p>
+        <p><strong>Email:</strong> <span id="user-email">—</span></p>
+        <p><strong>Телефон:</strong> <span id="user-phone">—</span></p>
+        <p><strong>Адрес доставки:</strong> <span id="user-address">—</span></p>
+      </div>
+      <button id="edit-btn" class="btn-checkout" style="margin-top: 1rem;">Редактировать</button>
+    </section>
+
+    <!-- Форма редактирования -->
+    <section id="edit-form-section" style="display: none;">
+      <h2>Редактировать данные</h2>
+      <form id="edit-form">
+        <label>
+          Имя:
+          <input type="text" id="edit-name" required />
+        </label>
+        <label>
+          Телефон:
+          <input type="tel" id="edit-phone" placeholder="+7 (999) 123-45-67" />
+        </label>
+        <label>
+          Адрес:
+          <input type="text" id="edit-address" placeholder="ул. Ленина, д. 5, кв. 10" />
+        </label>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <button type="submit" class="btn-checkout">Сохранить</button>
+          <button type="button" onclick="cancelEdit()" class="btn-back">Отмена</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- История заказов -->
+    <section class="profile-section">
+      <h2>История заказов</h2>
+      <div id="orders-list">
+        <!-- Заказы будут добавлены через JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Подвал -->
+  <footer class="footer">
+    <p>© 2025 Шаурма Быстро. Доставка за 30 минут.</p>
+    <div class="links">
+      <a href="#">О нас</a>
+      <a href="#">Доставка</a>
+      <a href="#">Контакты</a>
+      <a href="#">Политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <!-- Подключаем JS -->
+  <script src="js/logging.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
