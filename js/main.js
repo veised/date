@@ -17,7 +17,7 @@ async function loadProducts() {
     } else {
       // Если нет — читаем из database.json
       console.log('Загружаем базу из database.json...');
-      const response = await fetch('../database.json');
+      const response = await fetch('database.json');
       
       if (!response.ok) throw new Error('Файл не найден');
 
@@ -124,4 +124,5 @@ function addToCart(id) {
 }
 
 // Загрузка при старте
+
 loadProducts();
