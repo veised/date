@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Добавить товар — Шаурма Быстро</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Шапка сайта -->
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'">
+      Шаурма Быстро
+    </div>
+    <div class="contacts">
+      +7 (999) 123-45-67
+    </div>
+    <nav class="nav" id="main-nav">
+      <a href="profile.html">Личный кабинет</a>
+      <!-- Кнопка выхода добавится через JS -->
+    </nav>
+  </header>
+
+  <!-- Основной контент -->
+  <main class="main-content" style="max-width: 600px; margin: 3rem auto;">
+    <form id="product-form" class="auth-form">
+      <h1>Добавить товар</h1>
+
+      <div class="input-container">
+        <label>Название</label>
+        <input type="text" id="name" required placeholder="Классическая шаурма" />
+      </div>
+
+      <div class="input-container">
+        <label>Цена (₽)</label>
+        <input type="number" id="price" required min="10" placeholder="250" />
+      </div>
+
+      <div class="input-container">
+        <label>Описание</label>
+        <textarea id="description" required rows="2" placeholder="С курицей, овощами и чесночным соусом"></textarea>
+      </div>
+
+      <div class="input-container">
+        <label>Категория</label>
+        <select id="category" required>
+          <option value="шаурма">Шаурма</option>
+          <option value="напитки">Напитки</option>
+          <option value="картошка">Картошка</option>
+          <option value="соусы">Соусы</option>
+        </select>
+      </div>
+
+      <div class="input-container">
+        <label>Ссылка на изображение</label>
+        <input type="url" id="image" required placeholder="https://placehold.co/150x150/orange/white?text=Шаурма" />
+      </div>
+
+      <button type="submit" class="btn-checkout">Добавить товар</button>
+      <p style="margin-top: 2rem; font-size: 0.9rem; color: #666;">
+        После добавления товаров нажмите кнопку ниже, чтобы сохранить базу данных.
+      </p>
+      <button onclick="exportDatabase()" class="btn-checkout">
+        Экспортировать базу в файл
+      </button>
+
+      <!-- Кнопка: обновить из database.json -->
+      <button 
+        onclick="reloadFromDatabase()" 
+        style="background: #1976D2; color: white; padding: 0.8rem; border: none; border-radius: 8px; font-size: 1rem; margin-top: 1rem; width: 100%;">
+        Обновить базу из database.json
+      </button>
+    </form>
+  </main>
+
+  <!-- Подвал -->
+  <footer class="footer">
+    <p>© 2025 Шаурма Быстро. Только для сотрудников.</p>
+  </footer>
+
+  <!-- Подключаем JS -->
+  <script src="js/logging.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/add-product.js"></script>
+
+</body>
+</html>

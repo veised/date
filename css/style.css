@@ -1,0 +1,699 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Шапка */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: #ff6b35;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.contacts {
+  font-size: 1.1rem;
+}
+
+.nav a {
+  color: white;
+  margin-left: 1.5rem;
+  text-decoration: none;
+}
+
+/* Поиск */
+.search-section {
+  padding: 1.5rem 5%;
+  text-align: center;
+}
+
+.search-section input {
+  width: 80%;
+  max-width: 500px;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-section input:focus {
+  border-color: #ff6b35;
+}
+
+/* Основной контент */
+.main-content {
+  padding: 2rem 5%;
+}
+
+.main-content h2 {
+  margin: 2rem 0 1rem;
+  color: #ff6b35;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden; /* Важно: чтобы текст не вылезал */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 200px;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  padding: 0.8rem 1rem 0.2rem;
+  font-size: 1.1rem;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Максимум 2 строки */
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  height: 40px; /* Фиксированная высота */
+}
+
+.price {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  color: #ff6b35;
+  margin: 0;
+}
+
+.product-card button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+  margin: 0;
+}
+
+
+
+/* Подвал */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  background: #333;
+  color: white;
+  margin-top: 2rem;
+}
+
+.footer .links {
+  margin-top: 1rem;
+}
+
+.footer a {
+  color: #ccc;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+
+/* Стили для корзины */
+.cart-items {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.cart-item-info img {
+  border-radius: 8px;
+}
+
+.cart-item-info h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.cart-item-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-item-controls button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.btn-remove {
+  background: #ffebee !important;
+  color: #c62828 !important;
+  border: 1px solid #ef9a9a !important;
+}
+
+.cart-item-price {
+  font-weight: bold;
+  color: #ff6b35;
+  white-space: nowrap;
+  font-size: 1.1rem;
+}
+
+.cart-total {
+  font-size: 1.3rem;
+  text-align: right;
+  margin: 2rem 0;
+  color: #333;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-back, .btn-checkout {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-back {
+  background: #ddd;
+  color: #333;
+}
+
+
+
+.btn-checkout {
+  background: #ff6b35;
+  color: white;
+}
+
+
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cart-item-controls,
+  .cart-item-price {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+  }
+  .cart-total {
+    text-align: center;
+  }
+  .cart-actions {
+    flex-direction: column;
+  }
+}
+/* === Стили для форм === */
+.auth-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee;
+}
+
+.auth-form h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.auth-form label {
+  display: block;
+  margin: 1.2rem 0 0.4rem;
+  color: #555;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.8rem; /* Место для иконки */
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+  outline: none;
+}
+
+.auth-form input:focus {
+  border-color: #ff6b35;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+  transform: translateY(-1px);
+}
+
+.auth-form input::placeholder {
+  color: #aaa;
+}
+
+/* Иконки внутри полей */
+.auth-form .input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none;
+  font-size: 1.1rem;
+}
+
+/* Контейнер с иконкой */
+.auth-form .input-container {
+  position: relative;
+}
+
+/* Кнопки */
+.auth-form button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.9rem;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+
+.auth-form button:active {
+  transform: translateY(0);
+}
+
+/* Ссылка внизу */
+.auth-form p {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.auth-form a {
+  color: #ff6b35;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .auth-form {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .auth-form h1 {
+    font-size: 1.5rem;
+  }
+
+  .auth-form input {
+    padding: 0.7rem 1rem 0.7rem 2.4rem;
+    font-size: 0.95rem;
+  }
+
+  .auth-form .input-icon {
+    font-size: 1rem;
+    left: 0.8rem;
+  }
+}
+/* Карточки заказов */
+.order-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  flex-wrap: wrap;
+  transition: transform 0.2s;
+}
+
+
+
+.order-info {
+  flex: 2;
+  min-width: 200px;
+}
+
+.order-date {
+  color: #666;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+}
+
+.order-items {
+  flex: 2;
+  color: #555;
+  font-size: 0.95rem;
+  min-width: 180px;
+}
+
+.order-status select {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.order-actions {
+  flex: 1;
+  text-align: right;
+}
+
+.btn-details {
+  background: #1976D2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+
+
+/* Модальное окно */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.items-list {
+  margin-top: 1rem;
+}
+
+.item-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.item-line:last-child {
+  border-bottom: none;
+}
+
+.modal-footer {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.btn-close {
+  background: #ff6b35;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+
+
+/* Анимации */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOut {
+  to { opacity: 0; }
+}
+/* Секции заказов */
+.orders-section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  min-height: 80px;
+}
+
+.orders-section h3 {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Кнопки для курьера */
+.btn-take {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+
+
+.btn-deliver {
+  background: #198754;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+/* === Стили для форм === */
+.auth-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee;
+}
+
+.auth-form h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.auth-form label {
+  display: block;
+  margin: 1.2rem 0 0.4rem;
+  color: #555;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.auth-form input,
+.auth-form select,
+.auth-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.8rem; /* Место для иконки */
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+  outline: none;
+}
+
+.auth-form input:focus,
+.auth-form select:focus,
+.auth-form textarea:focus {
+  border-color: #ff6b35;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+  transform: translateY(-1px);
+}
+
+.auth-form input::placeholder,
+.auth-form select::placeholder,
+.auth-form textarea::placeholder {
+  color: #aaa;
+}
+
+/* Иконки внутри полей */
+.auth-form .input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none;
+  font-size: 1.1rem;
+}
+
+/* Контейнер с иконкой */
+.auth-form .input-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* Кнопки */
+.auth-form button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.9rem;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.auth-form button:hover {
+  background: #e55a2e;
+  transform: translateY(-2px);
+}
+
+.auth-form button:active {
+  transform: translateY(0);
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .auth-form {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .auth-form h1 {
+    font-size: 1.5rem;
+  }
+
+  .auth-form input,
+  .auth-form select,
+  .auth-form textarea {
+    padding: 0.7rem 1rem 0.7rem 2.4rem;
+    font-size: 0.95rem;
+  }
+
+  .auth-form .input-icon {
+    font-size: 1rem;
+    left: 0.8rem;
+  }
+}
